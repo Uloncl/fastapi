@@ -1,7 +1,9 @@
 from fastapi import FastAPI
+import httpx
 
 app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"greeting": "Hello, World!", "message": "Welcome to FastAPI!"}
+    response = await client.get("https://neocities.org/api/info?sitename=uloncl")
+    return response.text
